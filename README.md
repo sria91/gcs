@@ -1,4 +1,4 @@
-# GCS
+# GCS - Ground Control Station with command-line and REST interfaces.
 
 ## Setting up the development environment container
 * Install Docker for your operating system from [here](https://www.docker.com/get-started).
@@ -24,7 +24,7 @@ In order to build this software run: `cargo build --release`.
 
 ### Running the REST API server
 `gcs_api` starts a REST API server listening on port 9090.
-In order to start the GCS REST API server use: `cargo run --release --bin gcs_api`.
+* In order to start the GCS REST API server use: `cargo run --release --bin gcs_api`.
 * Creating a plateau with bounds: `curl -X POST -d '{"x_max": 5, "y_max": 5}' -H "Content-type: application/json" http://localhost:9090/plateaus`.
 * Listing the available plateaus: `curl -X GET -H "Content-type: application/json" http://localhost:9090/plateaus`.
 * Creating a rover with initial pose: `curl -X POST -d '{"x": 1, "y": 2, "facing": "North"}' -H "Content-type: application/json" http://localhost:9090/plateaus/{plateau_id}/rovers`.

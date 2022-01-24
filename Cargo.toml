@@ -1,0 +1,33 @@
+[package]
+name = "gcs"
+version = "0.1.0"
+description = "Ground Control Station with command-line and REST interfaces."
+authors = ["Srikanth Anantharam <srik3h@gmail.com>"]
+edition = "2021"
+readme = "README.md"
+repository = "https://github.com/sria91/gcs/"
+license = "MIT"
+keywords = ["rover", "gcs", "ground control station"]
+categories = ["aerospace::simulation"]
+include = ["/src", "/tests", "LICENSE"]
+publish = false
+default-run = "gcs_cli"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "3.0.10", features = ["derive"] }
+actix-rt = "1.1.1"
+actix-web = "3.3.3"
+serde = "1.0.134"
+serde_json = "1.0.75"
+serde_derive = "1.0.134"
+diesel = { version = "1.4.8", features = ["sqlite", "r2d2", "chrono", "uuid"] }
+r2d2 = "0.8.9"
+r2d2-diesel = "1.0.0"
+diesel-derive-enum = { version = "1", features = ["sqlite"] }
+libsqlite3-sys = { version = "^0", features = ["bundled"] }
+uuid = { version = "0.8.2", features = ["serde", "v4"] }
+env_logger = "0.9.0"
+chrono = { version = "0.4", features = ["serde"] }
+dotenv = "0.15.0"

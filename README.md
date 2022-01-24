@@ -1,4 +1,4 @@
-# GCS - Ground Control Station with command-line and REST interfaces.
+# GCS - Ground Control Station with command-line and REST interfaces
 
 ## Setting up the development environment container
 * Install Docker for your operating system from [here](https://www.docker.com/get-started).
@@ -16,11 +16,13 @@ In order to build this software run: `cargo build --release`.
 
 ### Testing the REST API
 * Install Node.js from [here](https://nodejs.org/en/download/).
-* Open a terminal and install Newman: `npm install -g newman`.
+* Open a terminal and install Newman:
+    * Windows: `npm install -g newman`.
+    * Linux: `sudo npm install -g newman`.
 * Start the REST API server in one terminal: `cargo run --release --bin gcs_api`.
 * In another terminal run:
-    * Windows: `newman run .\tests\gcs.postman_collection.json`
-    * Linux: `newman run ./tests/gcs.postman_collection.json`
+    * Windows: `newman run .\tests\gcs.postman_collection.json`.
+    * Linux: `newman run ./tests/gcs.postman_collection.json`.
 
 ## Running this software
 

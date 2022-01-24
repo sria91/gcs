@@ -12,6 +12,16 @@
 ## Building this software
 In order to build this software run: `cargo build --release`.
 
+## Testing this software
+
+### Testing the REST API
+* Install Node.js from [here](https://nodejs.org/en/download/).
+* Open a terminal and install Newman: `npm install -g newman`.
+* Start the REST API server in one terminal: `cargo run --release --bin gcs_api`.
+* In another terminal run:
+    * Windows: `newman run .\tests\gcs.postman_collection.json`
+    * Linux: `newman run ./tests/gcs.postman_collection.json`
+
 ## Running this software
 
 ### Running the CLI

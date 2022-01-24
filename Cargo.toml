@@ -9,7 +9,7 @@ repository = "https://github.com/sria91/gcs/"
 license = "MIT"
 keywords = ["rover", "gcs", "ground control station"]
 categories = ["aerospace::simulation"]
-include = ["/src", "/tests", "LICENSE"]
+include = ["/src", "/tests", "LICENSE.txt"]
 publish = false
 default-run = "gcs_cli"
 

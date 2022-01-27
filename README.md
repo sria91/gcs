@@ -15,7 +15,7 @@ In order to build this software run: `cargo build --release`.
 ## Testing this software
 
 ### Testing the CLI
-* Run the following command to run the CLI tests: `cargo test --test test_cli`.
+* Run the following command to run the CLI tests: `cargo test --release --test test_cli`.
 
 ### Testing the REST API
 * Install Node.js from [here](https://nodejs.org/en/download/).

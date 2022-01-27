@@ -1,3 +1,4 @@
+use std::time::Duration;
 use std::{env, io};
 
 use actix_web::{middleware, App, HttpServer};
@@ -13,7 +14,14 @@ async fn main() -> Result<(), io::Error> {
 
   let database_url = env::var("DATABASE_URL").expect("DATABASE_URL");
   let manager = ConnectionManager::<SqliteConnection>::new(database_url);
-  let pool = r2d2::Pool::builder().build(manager).expect("Failed to create pool");
+  let pool = r2d2::Pool::builder()
+    .connection_customizer(Box::new(ConnectionOptions {
+      enable_wal: true,
+      enable_foreign_keys: true,
+      busy_timeout: Some(Duration::from_secs(30)),
+    }))
+    .build(manager)
+    .expect("Failed to create pool");
 
   HttpServer::new(move || {
     App::new()

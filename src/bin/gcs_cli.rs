@@ -2,6 +2,7 @@ use std::env;
 use std::fs::File;
 use std::io::{self, BufRead, BufReader, Write};
 use std::str::FromStr;
+use std::time::Duration;
 
 use clap::Parser;
 use diesel::{r2d2::ConnectionManager, SqliteConnection};
@@ -36,7 +37,14 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
   // Initialize the database connection pool.
   let database_url = env::var("DATABASE_URL").expect("DATABASE_URL");
   let manager = ConnectionManager::<SqliteConnection>::new(database_url);
-  let pool = r2d2::Pool::builder().build(manager).expect("Failed to create pool");
+  let pool = r2d2::Pool::builder()
+    .connection_customizer(Box::new(ConnectionOptions {
+      enable_wal: true,
+      enable_foreign_keys: true,
+      busy_timeout: Some(Duration::from_secs(30)),
+    }))
+    .build(manager)
+    .expect("Failed to create pool");
 
   if args.list_plateaus {
     let conn = pool.get().expect(CONNECTION_POOL_ERROR);

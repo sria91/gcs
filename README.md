@@ -1,6 +1,6 @@
 # GCS - Ground Control Station with command-line and REST interfaces
 
-## Setting up the development environment container
+## Setting up the development environment container (`devcontainer`)
 * Install Docker for your operating system from [here](https://www.docker.com/get-started).
 * Install VS Code editor from [here](https://code.visualstudio.com/Download) and launch it.
 * Install the `Remote - Containers` VS Code extension from [here](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers).
@@ -18,8 +18,8 @@ In order to build this software run: `cargo build --release`.
 * Run the following command to run the CLI tests: `cargo test --release --test test_cli`.
 
 ### Testing the REST API
-* Install Node.js from [here](https://nodejs.org/en/download/).
-* Open a terminal and install Newman:
+* Install Node.js from [here](https://nodejs.org/en/download/) (skip if you are using the `devcontainer`).
+* Open a terminal and install Newman (skip if you are using the `devcontainer`):
     * Windows: `npm install -g newman`.
     * Linux: `sudo npm install -g newman`.
 * Start the REST API server in one terminal: `cargo run --release --bin gcs_api`.
